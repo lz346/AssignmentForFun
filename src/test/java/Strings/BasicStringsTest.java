@@ -1,34 +1,18 @@
-package StringsTests;
+package Strings;
 
-import Strings.BasicStrings;
+import junit.framework.TestCase;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
-// Please rewrite the test part as the format I gave here.
+public class BasicStringsTest extends TestCase {
 
-public class BasicStringsTest {
     private BasicStrings basicStrings;
 
-    @Before
-    public void setup(){
+    public void setUp() throws Exception {
         basicStrings = new BasicStrings();
+        super.setUp();
     }
 
-    @Test
-    public void flipConcatTest1(){
-        // Given
-        String string1 = " Bunny";
-        String string2 = "Bugs";
-        String expected = "Bugs Bunny";
-        // When
-        String actual = basicStrings.flipConcat(string1, string2);
-        // Then
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void flipConcatTest2(){
+    public void testFlipConcat1() {
         // Given
         String string1 = " Go";
         String string2 = "Let's";
@@ -38,10 +22,7 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-
-    @Test
-    public void flipConcatTest3(){
+    public void testFlipConcat2() {
         // Given
         String string1 = "Mario!";
         String string2 = "It's a me! ";
@@ -51,20 +32,26 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void getCharTest1(){
+    public void testFlipConcat3() {
         // Given
-        String string1 = "You can do this!";
-        char expected = 'c';
+        String string1 = "";
+        String string2 = "It's a me! ";
+        String expected = "It's a me! ";
         // When
-        char actual = basicStrings.getChar(string1, 4);
+        String actual = basicStrings.flipConcat(string1, string2);
         // Then
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void getCharTest2(){
+    public void testGetChar1() {// Given
+        String string1 = "You can do this!";
+        char expected = 'a';
+        // When
+        char actual = basicStrings.getChar(string1, 5);
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+    public void testGetChar2() {
         // Given
         String string1 = "You can do this!";
         char expected = '!';
@@ -74,30 +61,25 @@ public class BasicStringsTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void iCantSeeTest1(){
+    public void testICantSee1() {
         // Given
-        String string1 = "Haters";
-        String expected = "      ";
+        String string1 = "Linfeng Zhou";
+        String expected = "            ";
         // When
         String actual = basicStrings.iCantSee(string1);
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void iCantSeeTest2(){
+    public void testICantSee2() {
         // Given
-        String string1 = "I Can't Do It";
-        String expected = "             ";
+        String string1 = "This is the answer";
+        String expected = "                  ";
         // When
         String actual = basicStrings.iCantSee(string1);
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void iCantSeeTest3(){
+    public void testICantSee3() {
         // Given
         String string1 = "";
         String expected = "";
@@ -107,8 +89,7 @@ public class BasicStringsTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void loudAndClearTest1(){
+    public void testLoudAndClear1() {
         // Given
         String string = "";
         String expected = "";
@@ -117,42 +98,26 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void loudAndClearTest2(){
+    public void testLoudAndClear2() {
         // Given
-        String string = "lEt mE hEaR yOu";
-        String expected = "LET ME HEAR YOU";
+        String string = "here is a test";
+        String expected = "HERE IS A TEST";
+        // When
+        String actual = basicStrings.loudAndClear(string);
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+    public void testLoudAndClear3() {
+        // Given
+        String string = "HeRe IS anOThEr TesT";
+        String expected = "HERE IS ANOTHER TEST";
         // When
         String actual = basicStrings.loudAndClear(string);
         // Then
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void reverseCaseTest1(){
-        // Given
-        String string = "lEt mE hEaR yOu";
-        String expected = "LeT Me HeAr YoU";
-        // When
-        String actual = basicStrings.reverseCase(string);
-        // Then
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void reverseCaseTest2(){
-        // Given
-        String string = "I love Y'ALL!";
-        String expected = "i LOVE y'all!";
-        // When
-        String actual = basicStrings.reverseCase(string);
-        // Then
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void reverseCaseTest3(){
+    public void testReverseCase1() {
         // Given
         String string = "";
         String expected = "";
@@ -161,9 +126,26 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
+    public void testReverseCase2() {
+        // Given
+        String string = "HeRe IS anOThEr TesT";
+        String expected = "hErE is ANotHeR tESt";
+        // When
+        String actual = basicStrings.reverseCase(string);
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+    public void testReverseCase3() {
+        // Given
+        String string = "i LOVe Y'aLL";
+        String expected = "I lovE y'All";
+        // When
+        String actual = basicStrings.reverseCase(string);
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
 
-    @Test
-    public void oneAtATimeTest(){
+    public void testOneAtATime1() {
         // Given
         String string1 = "";
         String string2 = "";
@@ -173,9 +155,7 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void oneAtATimeTest2(){
+    public void testOneAtATime2() {
         // Given
         String string1 = "W abs";
         String string2 = "ed et";
@@ -185,9 +165,7 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void oneAtATimeTest3(){
+    public void testOneAtATime3() {
         // Given
         String string1 = "Caaa 7.0";
         String string2 = "hrrr";
@@ -197,7 +175,4 @@ public class BasicStringsTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
-
-
-
 }
